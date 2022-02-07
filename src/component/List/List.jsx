@@ -10,14 +10,7 @@ import React, { useState } from "react";
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./Style";
 
-const place = [
-  { name: "Kacchi Vai" },
-  { name: "Sultans Dine" },
-  { name: "Kabab Ghor" },
-  { name: "Dui Takar singara" },
-];
-
-export default function List() {
+export default function List({ places }) {
   const classes = useStyles();
   const [type, setType] = useState("resturants");
   const [ratting, setRatting] = useState();
@@ -45,8 +38,8 @@ export default function List() {
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
-        {place
-          ? place.map((place, i) => (
+        {places
+          ? places.map((place, i) => (
               <Grid item xs={12} key={i}>
                 <PlaceDetails place={place} />
               </Grid>

@@ -2,8 +2,7 @@ import GoogleMapReact from "google-map-react";
 import React from "react";
 import useStyles from "./Style";
 
-const coordinates = { lat: 0, lng: 0 };
-export default function Map() {
+export default function Map({ setBounds, setCoordinates, coordinates }) {
   const classes = useStyles();
 
   return (
@@ -15,7 +14,10 @@ export default function Map() {
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={""}
-        onChange={""}
+        onChange={(e) => {
+          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+        }}
         onChildClick={""}
       ></GoogleMapReact>
     </div>
