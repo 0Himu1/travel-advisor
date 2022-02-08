@@ -15,7 +15,7 @@ export default function App() {
   const [ratting, setRatting] = useState();
 
   const [bounds, setBounds] = useState({});
-  const [childClicked, setChildClicked] = useState(null);
+  const [childClicked, setChildClicked] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -33,18 +33,20 @@ export default function App() {
   }, [ratting, places]);
 
   useEffect(() => {
-    setLoading(true);
-    getPlacesDeta(type, bounds.sw, bounds.ne).then((data) => {
-      setPlaces(data);
-      setLoading(false);
-      setFilteredPlaces([]);
-    });
-  }, [type, bounds, coordinates]);
+    if (bounds.sw && bounds.ne) {
+      setLoading(true);
+      getPlacesDeta(type, bounds.sw, bounds.ne).then((data) => {
+        setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+        setLoading(false);
+        setFilteredPlaces([]);
+      });
+    }
+  }, [type, bounds]);
 
   return (
     <>
       <CssBaseline />
-      <Header />
+      <Header setCoordinates={setCoordinates} />
       <Grid container spaching={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List

@@ -18,7 +18,7 @@ export default function List({
   type,
   setType,
   ratting,
-  setRatting,
+  setRatting, 
 }) {
   const classes = useStyles();
   const [elRefs, setElRefs] = useState([]);

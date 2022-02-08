@@ -10,7 +10,7 @@ export default async function getPlacesDeta(type, sw, ne) {
     },
     headers: {
       "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-      "x-rapidapi-key": "00b36a0facmsh2f2bfcd8dd25df2p1e4155jsn9ea62b1e7915",
+      "x-rapidapi-key": "703132757bmsh9cd2d85619e64c4p13ce42jsn773e3be2fcdd",
     },
   };
 

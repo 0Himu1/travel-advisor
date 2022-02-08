@@ -17,7 +17,7 @@ import useStyle from "./Style";
 export default function PlaceDetails({ place, selected, refProp }) {
   const classes = useStyle();
 
-  if (selected)
+  if (selected) 
     refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
